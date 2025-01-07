@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monthly Expenses</title>
+  </head>
+  <body>
+    <h1>Monthly Expenses and Salary Details</h1>
+
+    <h2>Pending Expenses for {{ month }}-{{ year }}</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Expense</th>
+          <th>Image</th>
+          <th>Expense Date</th>
+          <th>Name of User</th>
+          <th>Clear Expense?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for expense in pending_expenses %}
+        <tr>
+          <td>{{ expense[0] }}</td>
+          <td>
+            {% if expense[1] %}
+              <a href="{{ url_for('static', filename='uploads/' + expense[1].split('/')[-1]) }}" target="_blank">
+                View Image
+              </a>
+            {% else %}
+              No Image
+            {% endif %}
+          </td>
+          
+          <td>{{ expense[2]}}</td>
+          <td>{{ expense[3]}}</td>
+          <td><form action="{{ url_for('clear_expense', id=expense[4]) }}" method="POST">
+            <button type="submit">Clear Expense</button>
+          </form></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Salary - Expenses for Cleared Expenses</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name of User</th>
+          <th>Salary</th>
+          <th>Cleared Expenses</th>
+          <th>Salary - Expenses</th>
+          {% for user_id, data in user_salaries.items() %}
+          <tr>
+              <td>{{ data.name }}</td>
+              <td>{{ data.salary }}</td>
+              <td>{{ data.total_expenses }}</td>
+              <td>{{ data.remaining }}</td>
+          </tr>
+          {% endfor %}
+      </tbody>
+      
+    </table>
+    <a href="{{ url_for('add_expense') }}">Add expense</a>
+  </body>
+</html>

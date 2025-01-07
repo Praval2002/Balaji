@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Claims</title>
+  </head>
+  <body>
+    <h1>Your Expense Claims</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Expense ID</th>
+          <th>Expense Date</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Receipt</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for claim in claims %}
+        <tr>
+          <td>{{ claim[0] }}</td>
+          <td>{{ claim[1] }}</td>
+          <td>{{ claim[2] }}</td>
+          <td>{{ claim[3] }}</td>
+          <td>
+            {% if claim[4] %}
+            <a href="{{ url_for('static', filename=claim[4]) }}" target="_blank"
+              >View Receipt</a
+            >
+            {% else %} No Receipt {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br />
+    <a href="{{ url_for('user_home') }}">Back to Home</a>
+  </body>
+</html>

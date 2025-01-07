@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Home</title>
+  </head>
+  <body>
+    <h1>Welcome to the User Home Page</h1>
+    <a href="{{ url_for('view_claims') }}">View My Claims</a><br />
+    <h2>Claim an Expense</h2>
+    <form
+      action="{{ url_for('user_home') }}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" required /><br />
+
+      <label for="expense_date">Expense Date:</label>
+      <input type="date" id="expense_date" name="expense_date" required /><br />
+
+      <label for="expense_image">Upload Receipt:</label>
+      <input type="file" id="expense_image" name="expense_image" /><br /><br />
+
+      <button type="submit">Claim Expense</button>
+    </form>
+
+    <p><a href="{{ url_for('index') }}">Logout</a></p>
+  </body>
+</html>
