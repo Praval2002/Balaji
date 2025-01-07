@@ -1,0 +1,24 @@
+Sales 
+Sno.  Customer name  Phone number
+Total Invoice value  Amount paid to date  Fully paid , Partially Paid 
+Total ( PAID, PARTIALLY, UNPAID) Settled, Pending 
+Document 
+
+
+WAGEs
+ Name  Phone Number  Aadhar Number (Text and document upload ) Passport size photo
+Daily wage   Attendance   Full Day (1x) Half Day (0.5x) Night duty (1.5x) Multiple selections can be done but with half day 
+
+    
+Income tracker & Employee salary details 
+ Objective 1 : to track all the sales done in the company . 
+Objective 2 : to keep a track of how much each employee earns V/s how much is already paid .
+
+Approach 1: make a website where you can add the bill number , amount and the customer details 
+
+Approach 2: add an additional page where you can see all the employee name with their corresponding salaries and the money they have already received .
+
+
+Details : 
+- add functionality for advance payments / half payments 
+- Add a admin portal where you can check all the amount received / pending.
