@@ -34,6 +34,15 @@ class Expense(Base):
     amount = Column(Numeric(10, 2), nullable=True)
     expense_image = Column(String(255), nullable=True)
 
+class Wages(Base):
+    __tablename__ = 'wages'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    phone_number = Column(Integer, nullable=False)
+    aadhar_Number = Column(Integer, nullable=False)
+    aadhar_photo = Column(String(255), nullable=True)
+    passport_photo = Column(String(255), nullable=True)
+    daily_wage = Column(Integer, nullable=False)
 def create_tables():
     Base.metadata.create_all(engine)  
     print("Tables `user` and `expense` created successfully!")

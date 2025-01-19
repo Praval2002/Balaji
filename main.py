@@ -39,6 +39,16 @@ class Expense(db.Model):
     amount = db.Column(db.Numeric(10, 2), nullable=True)
     expense_image = db.Column(db.String(255), nullable=True)
 
+class Wages(db.Model):
+    __tablename__ = 'wages'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    phone_number = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    aadhar_Number = db.Column(db.Date, nullable=False)
+    aadhar_photo = db.Column(db.String(255), nullable=True)
+    passport_photo = db.Column(db.String(255), nullable=True)
+    daily_wage = db.Column(db.Integer, nullable=False)
+
 with app.app_context():
     db.create_all()
 
